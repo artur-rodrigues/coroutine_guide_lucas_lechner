@@ -2,7 +2,7 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase1
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.appcompat.content.res.AppCompatResources
 import com.lukaslechner.coroutineusecasesonandroid.CoroutineUsecasesOnAndroidApplication
 import com.lukaslechner.coroutineusecasesonandroid.R
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
@@ -26,11 +26,11 @@ class ContinueCoroutineWhenUserLeavesScreenActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModel.uiState().observe(this, Observer { uiState ->
+        viewModel.uiState().observe(this) { uiState ->
             if (uiState != null) {
                 render(uiState)
             }
-        })
+        }
         binding.btnLoadData.setOnClickListener {
             viewModel.loadData()
         }
@@ -72,12 +72,12 @@ class ContinueCoroutineWhenUserLeavesScreenActivity : BaseActivity() {
         when (uiState.dataSource) {
             DataSource.Network -> {
                 progressBarLoadFromNetwork.setGone()
-                imageViewNetworkLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_check_green_24dp))
+                imageViewNetworkLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@ContinueCoroutineWhenUserLeavesScreenActivity, R.drawable.ic_check_green_24dp))
                 imageViewNetworkLoadSuccessOrError.setVisible()
             }
             DataSource.Database -> {
                 progressBarLoadFromDb.setGone()
-                imageViewDatabaseLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_check_green_24dp))
+                imageViewDatabaseLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@ContinueCoroutineWhenUserLeavesScreenActivity, R.drawable.ic_check_green_24dp))
                 imageViewDatabaseLoadSuccessOrError.setVisible()
             }
         }
@@ -94,12 +94,12 @@ class ContinueCoroutineWhenUserLeavesScreenActivity : BaseActivity() {
         when (uiState.dataSource) {
             is DataSource.Network -> {
                 progressBarLoadFromNetwork.setGone()
-                imageViewNetworkLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_clear_red_24dp))
+                imageViewNetworkLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@ContinueCoroutineWhenUserLeavesScreenActivity, R.drawable.ic_clear_red_24dp))
                 imageViewNetworkLoadSuccessOrError.setVisible()
             }
             is DataSource.Database -> {
                 progressBarLoadFromDb.setGone()
-                imageViewDatabaseLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_clear_red_24dp))
+                imageViewDatabaseLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@ContinueCoroutineWhenUserLeavesScreenActivity, R.drawable.ic_clear_red_24dp))
                 imageViewDatabaseLoadSuccessOrError.setVisible()
             }
         }

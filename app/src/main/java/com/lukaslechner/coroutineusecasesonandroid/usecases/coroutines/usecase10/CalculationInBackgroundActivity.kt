@@ -2,7 +2,6 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase1
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import com.lukaslechner.coroutineusecasesonandroid.R
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
 import com.lukaslechner.coroutineusecasesonandroid.base.useCase10Description
@@ -22,11 +21,11 @@ class CalculationInBackgroundActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModel.uiState().observe(this, Observer { uiState ->
+        viewModel.uiState().observe(this) { uiState ->
             if (uiState != null) {
                 render(uiState)
             }
-        })
+        }
         binding.btnCalculate.setOnClickListener {
             val factorialOf = binding.editTextFactorialOf.text.toString().toIntOrNull()
             if (factorialOf != null) {
@@ -51,9 +50,9 @@ class CalculationInBackgroundActivity : BaseActivity() {
 
     private fun onLoad() = with(binding) {
         progressBar.setVisible()
-        textViewResult.text = ""
-        textViewCalculationDuration.text = ""
-        textViewStringConversionDuration.text = ""
+        textViewResult.text = null
+        textViewCalculationDuration.text = null
+        textViewStringConversionDuration.text = null
         btnCalculate.isEnabled = false
         textViewResult.hideKeyboard()
     }
@@ -63,7 +62,7 @@ class CalculationInBackgroundActivity : BaseActivity() {
             getString(R.string.duration_calculation, uiState.computationDuration)
 
         textViewStringConversionDuration.text =
-            getString(R.string.duration_stringconversion, uiState.stringConversionDuration)
+            getString(R.string.duration_string_conversion, uiState.stringConversionDuration)
 
         progressBar.setGone()
         btnCalculate.isEnabled = true

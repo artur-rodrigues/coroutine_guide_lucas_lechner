@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
@@ -29,8 +30,10 @@
                 android:id="@+id/editTextFactorialOf"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:autofillHints="no"
                 android:inputType="numberDecimal"
-                android:text="50000" />
+                android:hint="@string/hint_factorial"
+                tools:text="50000" />
 
         </LinearLayout>
 

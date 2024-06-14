@@ -2,6 +2,7 @@ package com.lukaslechner.coroutineusecasesonandroid.base
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,9 +13,12 @@ import com.lukaslechner.coroutineusecasesonandroid.databinding.ActivityUsecasesB
 class UseCaseActivity : BaseActivity() {
 
     private val useCaseCategory by lazy {
-        intent.getParcelableExtra<UseCaseCategory>(
-            EXTRA_USE_CASE_CATEGORY
-        )!!
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("DATA", UseCaseCategory::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra("DATA")
+        }
     }
 
     private lateinit var binding: ActivityUsecasesBinding
@@ -34,10 +38,12 @@ class UseCaseActivity : BaseActivity() {
     private fun initRecyclerView() {
         binding.recyclerView.apply {
             adapter =
-                UseCaseAdapter(
-                    useCaseCategory,
-                    onUseCaseClickListener
-                )
+                useCaseCategory?.let {
+                    UseCaseAdapter(
+                        it,
+                        onUseCaseClickListener
+                    )
+                }
             hasFixedSize()
             layoutManager = LinearLayoutManager(this@UseCaseActivity)
             addItemDecoration(initItemDecoration())
@@ -56,7 +62,7 @@ class UseCaseActivity : BaseActivity() {
         return itemDecorator
     }
 
-    override fun getToolbarTitle() = useCaseCategory.categoryName
+    override fun getToolbarTitle() = useCaseCategory?.categoryName ?: getString(R.string.not_available)
 
     companion object {
 

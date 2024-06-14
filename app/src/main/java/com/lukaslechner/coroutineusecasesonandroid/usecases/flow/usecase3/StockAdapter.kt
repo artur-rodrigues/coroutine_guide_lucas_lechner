@@ -1,5 +1,6 @@
 package com.lukaslechner.coroutineusecasesonandroid.usecases.flow.usecase3
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import java.text.NumberFormat
 class StockAdapter: RecyclerView.Adapter<StockAdapter.ViewHolder>() {
 
     var stockList: List<Stock>? = null
+    @SuppressLint("NotifyDataSetChanged")
     set(value) {
         field = value
         notifyDataSetChanged()

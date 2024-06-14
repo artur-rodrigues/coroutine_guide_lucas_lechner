@@ -47,7 +47,8 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:contentDescription="@string/success_or_error_description"/>
 
             <TextView
                 android:id="@+id/textViewLoadFromDatabase"
@@ -76,7 +77,8 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:contentDescription="@string/success_or_error_description"/>
 
             <TextView
                 android:id="@+id/textViewLoadFromNetwork"

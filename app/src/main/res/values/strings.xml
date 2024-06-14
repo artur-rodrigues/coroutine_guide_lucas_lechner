@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Coroutines and Flows on Android</string>
+    <string name="not_available">N/A</string>
     <string name="perform_single_network_request_on_background_thread">Load recent Android Versions</string>
     <string name="perform_2_network_requests_sequentially">Load Features of most recent Android Version</string>
     <string name="load_features_of_android_versions_sequentially">Load Features of Android Versions sequentially</string>
     <string name="load_features_of_android_versions_concurrently">Load Features of Android Versions concurrently</string>
     <string name="duration">Operation took %d ms</string>
     <string name="duration_calculation">Calculation took %d ms</string>
-    <string name="duration_stringconversion">Converting BigInteger to String took %d ms</string>
+    <string name="duration_string_conversion">Converting BigInteger to String took %d ms</string>
     <string name="timeout">TimeOut in ms: </string>
     <string name="load_android_versions">Load Android Versions</string>
     <string name="clear_database">Clear Database</string>
@@ -16,11 +17,35 @@
     <string name="factorial_of">Factorial of:</string>
     <string name="calculate">Calculate</string>
     <string name="number_of_coroutines">Number of Coroutines:</string>
-    <string name="device_cores">Your device has %d cores</string>
     <string name="cancel">Cancel</string>
-    <string name="workmanager_request">A work manager worker was requested to send an analytics request.</string>
+    <string name="work_manager_request">A work manager worker was requested to send an analytics request.</string>
     <string name="dispatcher">Coroutine Dispatcher:</string>
     <string name="yield_during_calculation">yield() during calculation</string>
+
+    <string name="success_or_error_description">Success or Error image</string>
+    <string name="loading_button_description">Loading button</string>
+
+    <string name="hint_factorial">50000</string>
+    <string name="hint_time_out">50000</string>
+    <string name="hint_thread_number">2</string>
+
+    <string name="calculate_with_default_dispatcher_button">Calculate with Default Dispatcher</string>
+    <string name="calculate_on_main_thread_button">Calculate on Main Thread</string>
+    <string name="calculate_on_main_thread_non_blocking_button">Calculate on Main Thread - Non Blocking</string>
+    <string name="handle_exception_using_try_catch_button">Handle Exception using Try/Catch</string>
+    <string name="handle_exception_using_coroutine_exception_handler_button">Handle Exception using CoroutineExceptionHandler</string>
+    <string name="show_results_even_when_child_coroutine_fails_try_catch_button">Show Results even when Child Coroutine Fails (Try/Catch)</string>
+    <string name="last_update_time">lastUpdateTime: %s</string>
+    <string name="calculation_time">%s: Calculation took %dms</string>
+    <string name="calculate_factorial">Calculated factorial of %s</string>
+    <string name="coroutine">Coroutines: %s</string>
+    <string name="dispatcher_info">Dispatcher: %s</string>
+    <string name="yield">yield(): %b</string>
+
+    <plurals name="device_cores">
+        <item quantity="one">Your device has %d color</item>
+        <item quantity="other">Your device has %d colors</item>
+    </plurals>
 
     <string-array name="dispatchers">
         <item>Default</item>

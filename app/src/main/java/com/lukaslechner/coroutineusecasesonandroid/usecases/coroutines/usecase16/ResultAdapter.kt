@@ -1,5 +1,6 @@
 package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase16
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -42,6 +43,7 @@ class ResultAdapter(
         )
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addResult(state: UiState.Success) {
         results.add(0, state)
         notifyDataSetChanged()
@@ -53,16 +55,16 @@ class ResultAdapter(
         val result = results[position]
         val context = layout.context
 
-        factorialOf.text = "Calculated factorial of ${result.factorialOf}"
-        numberOfCoroutines.text = "Coroutines: ${result.numberOfCoroutines}"
-        dispatcher.text = "Dispatcher: ${result.dispatcherName}"
-        yielding.text = "yield(): ${result.yieldDuringCalculation}"
+        factorialOf.text = context.getString(R.string.calculate_factorial, result.factorialOf)
+        numberOfCoroutines.text = context.getString(R.string.coroutine, result.numberOfCoroutines)
+        dispatcher.text = context.getString(R.string.dispatcher_info, result.dispatcherName)
+        yielding.text = context.getString(R.string.yield, result.yieldDuringCalculation)
 
         calculationDuration.text =
             context.getString(R.string.duration_calculation, result.computationDuration)
 
         stringConversionDuration.text =
-            context.getString(R.string.duration_stringconversion, result.stringConversionDuration)
+            context.getString(R.string.duration_string_conversion, result.stringConversionDuration)
 
         computationResult.text = if (result.result.length <= 150) {
             "Result: ${result.result}"

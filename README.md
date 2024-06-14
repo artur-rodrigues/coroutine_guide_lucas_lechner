@@ -1,4 +1,4 @@
-![CoroutineUsecasesOnAndroid](documentation/images/Logo-new.png)
+![CoroutineUseCasesOnAndroid](documentation/images/Logo-new.png)
 
 # Kotlin Coroutines and Flow - Use Cases on Android
 

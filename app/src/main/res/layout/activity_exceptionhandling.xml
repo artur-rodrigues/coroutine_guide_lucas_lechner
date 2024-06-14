@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Handle Exception using Try/Catch" />
+            android:text="@string/handle_exception_using_try_catch_button" />
 
         <Button
             android:id="@+id/btnCoroutineExceptionHandler"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Handle Exception using CoroutineExceptionHandler" />
+            android:text="@string/handle_exception_using_coroutine_exception_handler_button" />
 
         <Button
             android:id="@+id/btnShowResultsEvenIfChildCoroutineFailsTryCatch"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Show Results even when Child Coroutine Fails (Try/Catch)" />
+            android:text="@string/show_results_even_when_child_coroutine_fails_try_catch_button" />
 
         <ProgressBar
             android:id="@+id/progressBar"

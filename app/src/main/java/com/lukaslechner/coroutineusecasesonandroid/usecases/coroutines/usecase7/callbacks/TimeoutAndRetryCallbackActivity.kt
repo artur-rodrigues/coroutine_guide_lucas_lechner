@@ -2,7 +2,6 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase7
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
 import com.lukaslechner.coroutineusecasesonandroid.base.useCase7UsingCallbacksDescription
 import com.lukaslechner.coroutineusecasesonandroid.databinding.ActivityRetrynetworkrequestBinding
@@ -21,11 +20,11 @@ class TimeoutAndRetryCallbackActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModel.uiState().observe(this, Observer { uiState ->
+        viewModel.uiState().observe(this) { uiState ->
             if (uiState != null) {
                 render(uiState)
             }
-        })
+        }
         binding.btnPerformSingleNetworkRequest.setOnClickListener {
             viewModel.performNetworkRequest()
         }
@@ -47,7 +46,7 @@ class TimeoutAndRetryCallbackActivity : BaseActivity() {
 
     private fun onLoad() = with(binding) {
         progressBar.setVisible()
-        textViewResult.text = ""
+        textViewResult.text = null
         btnPerformSingleNetworkRequest.isEnabled = false
     }
 

@@ -14,7 +14,7 @@ class AndroidVersionRepository(
         return database.getAndroidVersions().mapToUiModelList()
     }
 
-    suspend fun loadAndStoreRemoteAndroidVersions(): List<AndroidVersion> {
+    fun loadAndStoreRemoteAndroidVersions(): List<AndroidVersion> {
         return emptyList()
     }
 

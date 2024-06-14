@@ -17,7 +17,7 @@ class CalculationInSeveralCoroutinesViewModel(
     ) {
         uiState.value = UiState.Loading
 
-        var factorialResult = BigInteger.ZERO
+        var factorialResult: BigInteger
         val computationDuration = measureTimeMillis {
             factorialResult =
                 factorialCalculator.calculateFactorial(
@@ -26,7 +26,7 @@ class CalculationInSeveralCoroutinesViewModel(
                 )
         }
 
-        var resultString = ""
+        var resultString: String
         val stringConversionDuration = measureTimeMillis {
             resultString = convertToString(factorialResult)
         }

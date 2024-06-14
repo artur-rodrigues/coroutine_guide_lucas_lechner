@@ -2,7 +2,7 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase8
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.appcompat.content.res.AppCompatResources
 import com.lukaslechner.coroutineusecasesonandroid.R
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
 import com.lukaslechner.coroutineusecasesonandroid.base.useCase8Description
@@ -29,11 +29,11 @@ class RoomAndCoroutinesActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel.uiState().observe(this, Observer { uiState ->
+        viewModel.uiState().observe(this) { uiState ->
             if (uiState != null) {
                 render(uiState)
             }
-        })
+        }
         binding.btnLoadData.setOnClickListener {
             viewModel.loadData()
         }
@@ -75,12 +75,12 @@ class RoomAndCoroutinesActivity : BaseActivity() {
         when (uiState.dataSource) {
             DataSource.NETWORK -> {
                 progressBarLoadFromNetwork.setGone()
-                imageViewNetworkLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_check_green_24dp))
+                imageViewNetworkLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@RoomAndCoroutinesActivity, R.drawable.ic_check_green_24dp))
                 imageViewNetworkLoadSuccessOrError.setVisible()
             }
             DataSource.DATABASE -> {
                 progressBarLoadFromDb.setGone()
-                imageViewDatabaseLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_check_green_24dp))
+                imageViewDatabaseLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@RoomAndCoroutinesActivity, R.drawable.ic_check_green_24dp))
                 imageViewDatabaseLoadSuccessOrError.setVisible()
             }
         }
@@ -97,12 +97,12 @@ class RoomAndCoroutinesActivity : BaseActivity() {
         when (uiState.dataSource) {
             DataSource.NETWORK -> {
                 progressBarLoadFromNetwork.setGone()
-                imageViewNetworkLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_clear_red_24dp))
+                imageViewNetworkLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@RoomAndCoroutinesActivity, R.drawable.ic_clear_red_24dp))
                 imageViewNetworkLoadSuccessOrError.setVisible()
             }
             DataSource.DATABASE -> {
                 progressBarLoadFromDb.setGone()
-                imageViewDatabaseLoadSuccessOrError.setImageDrawable(getDrawable(R.drawable.ic_clear_red_24dp))
+                imageViewDatabaseLoadSuccessOrError.setImageDrawable(AppCompatResources.getDrawable(this@RoomAndCoroutinesActivity, R.drawable.ic_clear_red_24dp))
                 imageViewDatabaseLoadSuccessOrError.setVisible()
             }
         }

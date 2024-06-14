@@ -2,6 +2,7 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.flow.usecase2
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.lukaslechner.coroutineusecasesonandroid.R
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
 import com.lukaslechner.coroutineusecasesonandroid.base.flowUseCase2Description
 import com.lukaslechner.coroutineusecasesonandroid.databinding.ActivityFlowUsecase1Binding
@@ -44,8 +45,8 @@ class FlowUseCase2Activity : BaseActivity() {
             }
             is UiState.Success -> {
                 binding.recyclerView.setVisible()
-                binding.lastUpdateTime.text =
-                    "lastUpdateTime: ${LocalDateTime.now().toString(DateTimeFormat.fullTime())}"
+                binding.lastUpdateTime.text = getString(R.string.last_update_time, LocalDateTime.now().toString(DateTimeFormat.fullTime()))
+//                    "lastUpdateTime: ${LocalDateTime.now().toString(DateTimeFormat.fullTime())}"
                 adapter.stockList = uiState.stockList
                 binding.progressBar.setGone()
             }

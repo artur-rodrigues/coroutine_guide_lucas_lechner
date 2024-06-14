@@ -3,13 +3,14 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.flow.usecase3
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import timber.log.Timber
 
 class FlowUseCase3ViewModel(
-    stockPriceDataSource: StockPriceDataSource
+    private val stockPriceDataSource: StockPriceDataSource
 ) : BaseViewModel<UiState>() {
 
     /*
@@ -26,11 +27,7 @@ class FlowUseCase3ViewModel(
             - show toast with error message by emitting UiState.Error
      */
 
-    val currentStockPriceAsLiveData: LiveData<UiState> = stockPriceDataSource
-        .latestStockList
-        .map { stockList ->
-            UiState.Success(stockList) as UiState
-        }
+    val currentStockPriceAsLiveData: LiveData<UiState> = mapCallToFlow()
         .onStart {
             emit(UiState.Loading)
         }
@@ -38,4 +35,10 @@ class FlowUseCase3ViewModel(
             Timber.tag("Flow").d("Flow has completed.")
         }
         .asLiveData()
+
+    private fun mapCallToFlow(): Flow<UiState> {
+        return stockPriceDataSource.latestStockList.map { stockList ->
+            UiState.Success(stockList)
+        }
+    }
 }

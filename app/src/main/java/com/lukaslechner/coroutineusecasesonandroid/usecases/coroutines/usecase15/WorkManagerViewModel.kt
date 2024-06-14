@@ -1,6 +1,5 @@
 package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase15
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.work.Constraints
 import androidx.work.NetworkType
@@ -8,7 +7,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import java.util.concurrent.TimeUnit
 
-class WorkManagerViewModel(private val context: Context) : ViewModel() {
+class WorkManagerViewModel(private val workManager: WorkManager) : ViewModel() {
 
     fun performAnalyticsRequest() {
         val constraints =
@@ -21,6 +20,6 @@ class WorkManagerViewModel(private val context: Context) : ViewModel() {
             .addTag("analyitcs-work-request")
             .build()
 
-        WorkManager.getInstance(context).enqueue(request)
+        workManager.enqueue(request)
     }
 }

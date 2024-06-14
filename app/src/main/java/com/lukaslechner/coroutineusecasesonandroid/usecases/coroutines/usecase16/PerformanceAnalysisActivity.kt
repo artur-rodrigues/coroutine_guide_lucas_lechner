@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukaslechner.coroutineusecasesonandroid.R
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
@@ -35,13 +34,14 @@ class PerformanceAnalysisActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         val numberOfCores = Runtime.getRuntime().availableProcessors()
-        binding.textViewNumberOfCores.text = getString(R.string.device_cores, numberOfCores)
+        binding.textViewNumberOfCores.text = resources.getQuantityString(R.plurals.device_cores, numberOfCores, numberOfCores)
+//            getString(R.string.device_cores, numberOfCores)
         viewModel.uiState()
-            .observe(this@PerformanceAnalysisActivity, Observer { uiState ->
+            .observe(this@PerformanceAnalysisActivity) { uiState ->
                 if (uiState != null) {
                     render(uiState)
                 }
-            })
+            }
         binding.btnCalculate.setOnClickListener {
             val factorialOf = binding.editTextFactorialOf.text.toString().toIntOrNull()
             val numberOfThreads = binding.editTextNumberOfThreads.text.toString().toIntOrNull()

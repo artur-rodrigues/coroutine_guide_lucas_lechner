@@ -21,12 +21,12 @@ class FactorialCalculator {
                     calculateFactorialOfSubRange(subRange, yieldDuringCalculation)
                 }
             }.awaitAll()
-                .fold(BigInteger.ONE, { acc, element ->
+                .fold(BigInteger.ONE) { acc, element ->
                     if (yieldDuringCalculation) {
                         yield()
                     }
                     acc.multiply(element)
-                })
+                }
         }
     }
 

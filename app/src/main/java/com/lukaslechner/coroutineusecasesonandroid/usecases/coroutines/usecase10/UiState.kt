@@ -1,7 +1,7 @@
 package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase10
 
 sealed class UiState {
-    object Loading : UiState()
+    data object Loading : UiState()
     data class Success(
         val result: String,
         val computationDuration: Long,

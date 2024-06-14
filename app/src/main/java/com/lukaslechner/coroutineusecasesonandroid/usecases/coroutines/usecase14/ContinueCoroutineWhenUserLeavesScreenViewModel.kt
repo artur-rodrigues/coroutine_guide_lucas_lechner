@@ -44,6 +44,6 @@ class ContinueCoroutineWhenUserLeavesScreenViewModel(
 }
 
 sealed class DataSource(val name: String) {
-    object Database : DataSource("Database")
-    object Network : DataSource("Network")
+    data object Database : DataSource("Database")
+    data object Network : DataSource("Network")
 }

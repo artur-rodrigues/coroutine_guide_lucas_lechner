@@ -25,7 +25,8 @@
             android:padding="16dp"
             android:background="@color/transparent"
             android:src="@drawable/ic_arrow_back_white"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:contentDescription="@string/loading_button_description"/>
 
         <TextView
             android:id="@+id/toolbarTitle"

@@ -2,7 +2,7 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase1
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import com.lukaslechner.coroutineusecasesonandroid.R
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
 import com.lukaslechner.coroutineusecasesonandroid.base.useCase17Description
 import com.lukaslechner.coroutineusecasesonandroid.databinding.ActivityCalculateonmainBinding
@@ -21,11 +21,11 @@ class PerformCalculationOnMainThreadActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModel.uiState().observe(this, Observer { uiState ->
+        viewModel.uiState().observe(this) { uiState ->
             if (uiState != null) {
                 render(uiState)
             }
-        })
+        }
         binding.btnCalculateOnMain.setOnClickListener {
             val factorialOf = binding.editTextFactorialOf.text.toString().toIntOrNull()
             if (factorialOf != null) {
@@ -62,7 +62,7 @@ class PerformCalculationOnMainThreadActivity : BaseActivity() {
 
     private fun onLoad() = with(binding) {
         progressBar.setVisible()
-        textViewCalculationDuration.text = ""
+        textViewCalculationDuration.text = null
         btnCalculateOnMain.isEnabled = false
         btnCalculateOnMainUsingYield.isEnabled = false
         btnCalculateWithDefaultDispatcher.isEnabled = false
@@ -73,8 +73,8 @@ class PerformCalculationOnMainThreadActivity : BaseActivity() {
         btnCalculateOnMain.isEnabled = true
         btnCalculateOnMainUsingYield.isEnabled = true
         btnCalculateWithDefaultDispatcher.isEnabled = true
-        textViewCalculationDuration.text =
-            "${uiState.thread}: Calculation took ${uiState.duration}ms"
+        textViewCalculationDuration.text = getString(R.string.calculation_time, uiState.thread, uiState.duration)
+//            "${uiState.thread}: Calculation took ${uiState.duration}ms"
     }
 
     private fun onError(uiState: UiState.Error) = with(binding) {

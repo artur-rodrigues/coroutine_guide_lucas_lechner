@@ -1,11 +1,9 @@
 package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase7.rx
 
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseViewModel
-import com.lukaslechner.coroutineusecasesonandroid.mock.VersionFeatures
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -37,10 +35,10 @@ class TimeoutAndRetryRxViewModel(
                 .retry { x, e ->
                     Timber.e(e)
                     x <= numberOfRetries
-                },
-            BiFunction<VersionFeatures, VersionFeatures, List<VersionFeatures>> { versionFeaturesOreo, versionFeaturesPie ->
+                })
+            { versionFeaturesOreo, versionFeaturesPie ->
                 listOf(versionFeaturesOreo, versionFeaturesPie)
-            })
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(

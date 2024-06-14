@@ -2,7 +2,6 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase3
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import com.lukaslechner.coroutineusecasesonandroid.R
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
 import com.lukaslechner.coroutineusecasesonandroid.base.useCase3Description
@@ -28,11 +27,11 @@ class PerformNetworkRequestsConcurrentlyActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModel.uiState().observe(this, Observer { uiState ->
+        viewModel.uiState().observe(this) { uiState ->
             if (uiState != null) {
                 render(uiState)
             }
-        })
+        }
         binding.btnRequestsSequentially.setOnClickListener {
             viewModel.performNetworkRequestsSequentially()
         }
@@ -58,8 +57,8 @@ class PerformNetworkRequestsConcurrentlyActivity : BaseActivity() {
     private fun onLoad() = with(binding) {
         operationStartTime = System.currentTimeMillis()
         progressBar.setVisible()
-        textViewDuration.text = ""
-        textViewResult.text = ""
+        textViewDuration.text = null
+        textViewResult.text = null
         disableButtons()
     }
 

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
@@ -29,8 +30,10 @@
                 android:id="@+id/editTextFactorialOf"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:text="15000" />
+                android:hint="@string/hint_factorial"
+                tools:text="50000" />
 
         </LinearLayout>
 
@@ -51,8 +54,10 @@
                 android:id="@+id/editTextNumberOfThreads"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:text="2" />
+                android:hint="@string/hint_thread_number"
+                tools:text="2" />
 
         </LinearLayout>
 
@@ -91,7 +96,7 @@
                 android:textColor="@color/primary_text"
                 android:textSize="16sp" />
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switchYield"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/device_cores" />
+            tools:text="Your device has 4 colors" />
 
         <Button
             android:id="@+id/btnCalculate"

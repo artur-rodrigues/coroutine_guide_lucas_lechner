@@ -2,7 +2,6 @@ package com.lukaslechner.coroutineusecasesonandroid.usecases.coroutines.usecase5
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import com.lukaslechner.coroutineusecasesonandroid.base.BaseActivity
 import com.lukaslechner.coroutineusecasesonandroid.base.useCase5Description
 import com.lukaslechner.coroutineusecasesonandroid.databinding.ActivityNetworkrequestwithtimeoutBinding
@@ -21,11 +20,11 @@ class NetworkRequestWithTimeoutActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModel.uiState().observe(this, Observer { uiState ->
+        viewModel.uiState().observe(this) { uiState ->
             if (uiState != null) {
                 render(uiState)
             }
-        })
+        }
         binding.btnPerformSingleNetworkRequest.setOnClickListener {
             val timeOut = binding.editTextTimeOut.text.toString().toLongOrNull()
             if (timeOut != null) {
@@ -50,7 +49,7 @@ class NetworkRequestWithTimeoutActivity : BaseActivity() {
 
     private fun onLoad() = with(binding) {
         progressBar.setVisible()
-        textViewResult.text = ""
+        textViewResult.text = null
         btnPerformSingleNetworkRequest.isEnabled = false
     }
 

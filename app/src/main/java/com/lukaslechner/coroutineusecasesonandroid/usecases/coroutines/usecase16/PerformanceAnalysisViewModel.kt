@@ -21,7 +21,7 @@ class PerformanceAnalysisViewModel(
         uiState.value = UiState.Loading
         viewModelScope.launch {
 
-            var factorialResult = BigInteger.ZERO
+            var factorialResult: BigInteger
             val computationDuration = measureTimeMillis {
                 factorialResult =
                     factorialCalculator.calculateFactorial(
@@ -32,7 +32,7 @@ class PerformanceAnalysisViewModel(
                     )
             }
 
-            var resultString = ""
+            var resultString: String
             val stringConversionDuration = measureTimeMillis {
                 resultString = convertToString(factorialResult, dispatcher)
             }

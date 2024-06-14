@@ -38,7 +38,7 @@ class FactorialCalculator(
         return factorial
     }
 
-    fun createSubRangeList(
+    private fun createSubRangeList(
         factorialOf: Int,
         numberOfSubRanges: Int
     ): List<SubRange> {
