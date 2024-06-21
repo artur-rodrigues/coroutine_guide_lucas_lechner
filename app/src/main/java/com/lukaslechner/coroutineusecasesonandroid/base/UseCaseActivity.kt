@@ -14,10 +14,10 @@ class UseCaseActivity : BaseActivity() {
 
     private val useCaseCategory by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra("DATA", UseCaseCategory::class.java)
+            intent.getParcelableExtra(EXTRA_USE_CASE_CATEGORY, UseCaseCategory::class.java)
         } else {
             @Suppress("DEPRECATION")
-            intent.getParcelableExtra("DATA")
+            intent.getParcelableExtra(EXTRA_USE_CASE_CATEGORY)
         }
     }
 
