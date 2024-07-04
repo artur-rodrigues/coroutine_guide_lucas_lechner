@@ -3,6 +3,10 @@ package com.lukaslechner.coroutineusecasesonandroid.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,5 +32,15 @@ abstract class BaseViewModel<T> : ViewModel() {
                 setError("Something unexpected happened!")
             }
         })
+    }
+
+    fun <T> executeRxRequest(single: Single<T>, responseCallBack: (T) -> Unit): Disposable {
+        return single.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseCallBack(it)
+            }, {
+                setError("Network request failed")
+            })
     }
 }
