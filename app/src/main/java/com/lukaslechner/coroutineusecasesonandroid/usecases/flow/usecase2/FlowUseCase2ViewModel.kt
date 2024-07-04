@@ -24,4 +24,7 @@ class FlowUseCase2ViewModel(
      */
 
     val currentStockPriceAsLiveData: LiveData<UiState> = TODO()
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

@@ -18,4 +18,8 @@ class TimeoutAndRetryViewModel(
         // run api.getAndroidVersionFeatures(27) and api.getAndroidVersionFeatures(28) in parallel
 
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

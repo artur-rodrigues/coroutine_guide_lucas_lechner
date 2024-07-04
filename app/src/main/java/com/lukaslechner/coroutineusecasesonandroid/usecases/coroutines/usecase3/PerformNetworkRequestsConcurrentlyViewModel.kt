@@ -14,4 +14,8 @@ class PerformNetworkRequestsConcurrentlyViewModel(
     fun performNetworkRequestsConcurrently() {
 
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

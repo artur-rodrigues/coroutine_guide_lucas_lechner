@@ -41,4 +41,8 @@ class FlowUseCase3ViewModel(
             UiState.Success(stockList)
         }
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

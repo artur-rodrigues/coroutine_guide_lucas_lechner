@@ -57,4 +57,8 @@ class PerformanceAnalysisViewModel(
         withContext(dispatcher) {
             number.toString()
         }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

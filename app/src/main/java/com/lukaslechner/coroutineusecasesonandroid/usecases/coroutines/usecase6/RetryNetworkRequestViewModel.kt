@@ -11,4 +11,8 @@ class RetryNetworkRequestViewModel(
 
     }
 
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
+
 }

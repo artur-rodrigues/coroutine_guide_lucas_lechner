@@ -10,4 +10,8 @@ class PerformSingleNetworkRequestViewModel(
     fun performSingleNetworkRequest() {
 
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

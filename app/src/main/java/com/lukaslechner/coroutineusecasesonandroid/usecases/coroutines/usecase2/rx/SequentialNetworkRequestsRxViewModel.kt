@@ -9,4 +9,8 @@ class SequentialNetworkRequestsRxViewModel(
     fun perform2SequentialNetworkRequest() {
 
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

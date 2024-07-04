@@ -52,6 +52,10 @@ class TimeoutAndRetryRxViewModel(
             .addTo(disposables)
     }
 
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onCleared() {
         super.onCleared()
         disposables.clear()

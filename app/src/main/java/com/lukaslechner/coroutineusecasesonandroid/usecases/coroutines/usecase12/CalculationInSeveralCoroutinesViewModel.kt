@@ -37,4 +37,7 @@ class CalculationInSeveralCoroutinesViewModel(
 
     // TODO: execute on background thread
     private fun convertToString(number: BigInteger): String = number.toString()
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

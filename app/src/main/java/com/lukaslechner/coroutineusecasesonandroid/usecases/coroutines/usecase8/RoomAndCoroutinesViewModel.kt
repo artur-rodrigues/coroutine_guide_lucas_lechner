@@ -15,6 +15,10 @@ class RoomAndCoroutinesViewModel(
     fun clearDatabase() {
 
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }
 
 enum class DataSource(val dataSourceName: String) {

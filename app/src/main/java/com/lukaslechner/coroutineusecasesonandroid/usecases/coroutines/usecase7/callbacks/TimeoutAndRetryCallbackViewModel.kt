@@ -160,6 +160,10 @@ class TimeoutAndRetryCallbackViewModel(api: CallbackMockApi = mockApi()) :
         }
     }
 
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onCleared() {
         super.onCleared()
         cancelNetworkRequests()

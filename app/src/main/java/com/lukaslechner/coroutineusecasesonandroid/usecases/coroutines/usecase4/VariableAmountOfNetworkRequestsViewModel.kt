@@ -14,4 +14,8 @@ class VariableAmountOfNetworkRequestsViewModel(
     fun performNetworkRequestsConcurrently() {
 
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

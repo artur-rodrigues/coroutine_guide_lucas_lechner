@@ -18,4 +18,8 @@ class ExceptionHandlingViewModel(
     fun showResultsEvenIfChildCoroutineFails() {
 
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

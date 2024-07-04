@@ -72,4 +72,8 @@ class PerformCalculationOnMainThreadViewModel : BaseViewModel<UiState>() {
             }
             factorial
         }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }

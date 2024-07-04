@@ -41,6 +41,10 @@ class ContinueCoroutineWhenUserLeavesScreenViewModel(
     fun clearDatabase() {
         repository.clearDatabase()
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }
 
 sealed class DataSource(val name: String) {

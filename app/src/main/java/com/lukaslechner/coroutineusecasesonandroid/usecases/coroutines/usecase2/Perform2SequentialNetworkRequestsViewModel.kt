@@ -11,4 +11,8 @@ class Perform2SequentialNetworkRequestsViewModel(
         // TODO: Exercise 1
         // switch to branch "coroutine_course_full" to see solution
     }
+
+    override fun setError(messageError: String) {
+        TODO("Not yet implemented")
+    }
 }
