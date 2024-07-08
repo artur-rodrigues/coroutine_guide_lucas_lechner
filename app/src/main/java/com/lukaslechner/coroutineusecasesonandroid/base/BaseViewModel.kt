@@ -3,10 +3,12 @@ package com.lukaslechner.coroutineusecasesonandroid.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,5 +44,15 @@ abstract class BaseViewModel<T> : ViewModel() {
             }, {
                 setError("Network request failed")
             })
+    }
+
+    fun executeCoroutineRequest(response: suspend () -> Unit) {
+        viewModelScope.launch {
+            try {
+                response()
+            } catch (e: Exception) {
+                setError("Network request failed!")
+            }
+        }
     }
 }
