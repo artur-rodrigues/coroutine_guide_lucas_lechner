@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 abstract class BaseViewModel<T> : ViewModel() {
 
@@ -46,11 +47,12 @@ abstract class BaseViewModel<T> : ViewModel() {
             })
     }
 
-    fun executeCoroutineRequest(response: suspend () -> Unit) {
+    fun executeLaunchCoroutineRequest(response: suspend () -> Unit) {
         viewModelScope.launch {
             try {
                 response()
             } catch (e: Exception) {
+                Timber.e(e)
                 setError("Network request failed!")
             }
         }

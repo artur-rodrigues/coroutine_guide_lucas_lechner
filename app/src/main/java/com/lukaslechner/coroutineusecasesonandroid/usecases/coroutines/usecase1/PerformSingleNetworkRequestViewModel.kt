@@ -4,14 +4,19 @@ import com.lukaslechner.coroutineusecasesonandroid.base.BaseViewModel
 import com.lukaslechner.coroutineusecasesonandroid.mock.MockApi
 
 class PerformSingleNetworkRequestViewModel(
-    private val mockApi: MockApi = mockApi()
+    private val mockApi: MockApi = mockApiError()
 ) : BaseViewModel<UiState>() {
 
     fun performSingleNetworkRequest() {
+        uiState.value = UiState.Loading
 
+        executeLaunchCoroutineRequest {
+            val version = mockApi.getRecentAndroidVersions()
+            uiState.value = UiState.Success(version)
+        }
     }
 
     override fun setError(messageError: String) {
-        TODO("Not yet implemented")
+        uiState.value = UiState.Error(messageError)
     }
 }

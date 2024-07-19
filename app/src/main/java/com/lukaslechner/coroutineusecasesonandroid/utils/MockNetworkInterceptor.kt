@@ -1,6 +1,14 @@
 package com.lukaslechner.coroutineusecasesonandroid.utils
 
-import okhttp3.*
+import com.google.gson.Gson
+import com.lukaslechner.coroutineusecasesonandroid.mock.mockAndroidVersions
+import com.lukaslechner.coroutineusecasesonandroid.mock.mockVersionFeaturesAndroid10
+import okhttp3.Interceptor
+import okhttp3.MediaType
+import okhttp3.Protocol
+import okhttp3.Request
+import okhttp3.Response
+import okhttp3.ResponseBody
 import kotlin.random.Random
 
 class MockNetworkInterceptor : Interceptor {
@@ -84,6 +92,38 @@ class MockNetworkInterceptor : Interceptor {
             )
             .build()
     }
+
+    fun mockVersionSuccess() =
+        mock(
+            "http://localhost/recent-android-versions",
+            { Gson().toJson(mockAndroidVersions) },
+            200,
+            1000
+        )
+
+    fun mockVersionError() =
+        mock(
+            "http://localhost/recent-android-versions",
+            { "Something went wrong on server side" },
+            500,
+            1000
+        )
+
+    fun mockFeatureSuccess() =
+        mock(
+            "http://localhost/android-version-features/29",
+            { Gson().toJson(mockVersionFeaturesAndroid10) },
+            200,
+            1000
+        )
+
+    fun mockFeatureError() =
+        mock(
+            "http://localhost/android-version-features/29",
+            { "Something went wrong on server side" },
+            500,
+            1000
+        )
 
     fun mock(
         path: String,
